@@ -1,4 +1,3 @@
-# OSS Audit Project
 # Open Source Audit Project — Git
 
 ## Student Details
