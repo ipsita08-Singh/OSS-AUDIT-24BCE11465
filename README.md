@@ -1,8 +1,6 @@
 # Open Source Audit Project — Git
 
 ## Student Details
-Name: Ipsita Singh
-Registration Number: 24BCE11465 
 
 **Name:** Ipsita Singh
 **Registration Number:** 24BCE11465
