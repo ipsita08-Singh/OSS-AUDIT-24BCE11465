@@ -3,6 +3,7 @@
 ## Student Details
 
 **Name:** Ipsita Singh
+
 **Registration Number:** 24BCE11465
 
 ---
