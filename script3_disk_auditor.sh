@@ -1,27 +1,27 @@
 #!/bin/bash
-# Script 3: Disk and Permission Auditor
 
-DIRS=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
+paths=("/etc" "/var/log" "/home" "/usr/bin" "/tmp")
 
 echo "Directory Audit Report"
 echo "----------------------"
 
-for DIR in "${DIRS[@]}"; do
-    if [ -d "$DIR" ]; then
-        PERMS=$(ls -ld $DIR | awk '{print $1, $3, $4}')
-        SIZE=$(du -sh $DIR 2>/dev/null | cut -f1)
-        echo "$DIR => Permissions: $PERMS | Size: $SIZE"
+for path in "${paths[@]}"; do
+    if [ -d "$path" ]; then
+        perms=$(stat -c "%A %U %G" "$path")
+        
+        size=$(du -sh "$path" 2>/dev/null | awk '{print $1}')
+        
+        echo "$path => Permissions: $perms | Size: $size"
     else
-        echo "$DIR does not exist"
+        echo "$path does not exist"
     fi
 done
 
-# Git config check
-CONFIG_DIR="$HOME/.gitconfig"
+git_conf="$HOME/.gitconfig"
 
-if [ -f "$CONFIG_DIR" ]; then
+if [ -f "$git_conf" ]; then
     echo "Git config found:"
-    ls -l $CONFIG_DIR
+    ls -l "$git_conf"
 else
     echo "Git config not found"
 fi
