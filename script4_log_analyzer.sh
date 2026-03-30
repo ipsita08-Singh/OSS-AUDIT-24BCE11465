@@ -1,5 +1,4 @@
 #!/bin/bash
-# Script 4: Log File Analyzer
 
 LOGFILE=$1
 KEYWORD=${2:-"error"}
