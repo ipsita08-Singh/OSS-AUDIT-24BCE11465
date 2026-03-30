@@ -1,18 +1,34 @@
 #!/bin/bash
-# Script 5: Open Source Manifesto Generator
 
-echo "Answer three questions:"
+echo "======================================"
+echo " OPEN SOURCE MANIFESTO GENERATOR"
+echo "======================================"
 
-read -p "Tool you use: " TOOL
-read -p "Freedom means: " FREEDOM
-read -p "What will you build: " BUILD
+until [ -n "$tool" ]; do
+    read -p "1. Name an open-source tool: " tool
+done
 
-DATE=$(date '+%d %B %Y')
-OUTPUT="manifesto_$(whoami).txt"
+until [ -n "$freedom" ]; do
+    read -p "2. What does freedom mean to you? " freedom
+done
 
-echo "On $DATE, I believe that open source is about $FREEDOM." > $OUTPUT
-echo "Tools like $TOOL empower developers worldwide." >> $OUTPUT
-echo "I aim to build $BUILD and share it freely." >> $OUTPUT
+until [ -n "$build" ]; do
+    read -p "3. What will you build and share? " build
+done
 
-echo "Manifesto saved in $OUTPUT"
-cat $OUTPUT
+today=$(date +"%d %B %Y")
+user_name=$(id -un)
+file="manifesto_${user_name}.txt"
+
+echo "--------------------------------------"
+
+printf "On %s, I believe in open source.\n" "$today" > "$file"
+printf "I regularly use %s.\n" "$tool" >> "$file"
+printf "For me, freedom means %s.\n" "$freedom" >> "$file"
+printf "I aim to build %s and share it with the world.\n" "$build" >> "$file"
+
+echo "--------------------------------------"
+echo "Manifesto saved to $file"
+echo "--------------------------------------"
+
+cat "$file"
