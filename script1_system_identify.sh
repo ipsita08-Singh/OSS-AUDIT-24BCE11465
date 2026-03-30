@@ -1,24 +1,24 @@
-@@ -0,0 +1,23 @@
 #!/bin/bash
 # Script 1: System Identity Report
-# Author: Shrijal Goswami
+# Author: Ipsita Singh
 
-STUDENT_NAME="Shrijal Goswami"
-SOFTWARE_CHOICE="Git"
+name="Ipsita Singh"
+tool="Git"
 
-KERNEL=$(uname -r)
-USER_NAME=$(whoami)
-UPTIME=$(uptime -p)
-DATE=$(date)
-DISTRO=$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)
+kernel_version=$(uname -r)
+current_user=$(id -un)
+system_uptime=$(uptime -p)
+current_date=$(date)
+
+distro_name=$(grep '^PRETTY_NAME' /etc/os-release | awk -F= '{print $2}' | tr -d '"')
 
 echo "================================"
-echo " Open Source Audit — $STUDENT_NAME"
+echo " Open Source Audit — $name"
 echo "================================"
-echo "Software : $SOFTWARE_CHOICE"
-echo "Kernel   : $KERNEL"
-echo "Distro   : $DISTRO"
-echo "User     : $USER_NAME"
-echo "Uptime   : $UPTIME"
-echo "Date     : $DATE"
+echo "Software : $tool"
+echo "Kernel   : $kernel_version"
+echo "Distro   : $distro_name"
+echo "User     : $current_user"
+echo "Uptime   : $system_uptime"
+echo "Date     : $current_date"
 echo "License  : Linux kernel is licensed under GPL v2"
